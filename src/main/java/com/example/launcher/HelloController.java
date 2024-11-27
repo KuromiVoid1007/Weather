@@ -26,7 +26,7 @@ public class HelloController {
     private URL location;
 
     @FXML
-    private Text Pressure;
+    private Text pressure;
 
     @FXML
     private Text feels;
@@ -65,37 +65,27 @@ public class HelloController {
     @FXML
     void initialize() {
 
-
         serch.setOnAction(event ->{
             String getUsersCity = serchCity.getText().trim();
             String output = getUrlContent("https://api.openweathermap.org/data/2.5/weather?q=" + getUsersCity + "&appid=d200ca4300e0429570a918f9dc0283b7");
 
             if (!output.isEmpty()) {
                 JSONObject obj = new JSONObject(output);
-                temp.setText("" + obj.getJSONObject("main").getDouble("temp"));
-                feels.setText("" + obj.getJSONObject("main").getDouble("feels_like"));
-                tempMax.setText("" + obj.getJSONObject("main").getDouble("temp_max"));
-                tempMin.setText("" + obj.getJSONObject("main").getDouble("temp_min"));
-                Pressure.setText("" + obj.getJSONObject("main").getDouble("pressure"));
 
-                centerText(temp);
-                centerText(feels);
-                centerText(tempMax);
-                centerText(tempMin);
-                centerText(Pressure);
+                // Преобразование Кельвинов в Цельсии
+                double tempInCelsius = obj.getJSONObject("main").getDouble("temp") - 273.15;
+                double feelsLikeInCelsius = obj.getJSONObject("main").getDouble("feels_like") - 273.15;
+                double tempMaxInCelsius = obj.getJSONObject("main").getDouble("temp_max") - 273.15;
+                double tempMinInCelsius = obj.getJSONObject("main").getDouble("temp_min") - 273.15;
+
+                temp.setText(String.format("%.1f °C", tempInCelsius));
+                feels.setText(String.format("%.1f °C", feelsLikeInCelsius));
+                tempMax.setText(String.format("%.1f °C", tempMaxInCelsius));
+                tempMin.setText(String.format("%.1f °C", tempMinInCelsius));
+                pressure.setText("" + obj.getJSONObject("main").getDouble("pressure") + " hPa");
+
             }
         });
-    }
-
-    private void centerText(Text text) {
-        // Привязываем `layoutX` элемента к ширине родителя
-        if (text.layoutXProperty().isBound()) {
-            text.layoutXProperty().unbind();
-        }
-
-        text.layoutXProperty().bind(
-                rootPane.widthProperty().subtract(text.boundsInLocalProperty().get().getWidth()).divide(2)
-        );
     }
 
 

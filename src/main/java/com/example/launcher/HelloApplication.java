@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.scene.image.Image;
 
 import java.io.IOException;
 
@@ -22,7 +21,6 @@ public class HelloApplication extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/com/example/launcher/hello-view.fxml"));
         Scene scene = new Scene(root);
 
-        scene.getStylesheets().add(getClass().getResource("/com/example/launcher/style/style.css").toExternalForm());
         // Устанавливаем сцену
 
         primaryStage.setTitle("Launcher");

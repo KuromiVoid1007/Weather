@@ -30,11 +30,11 @@
          <Text fx:id="textPressure" layoutX="75.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Давление" />
 
 
-         <Text fx:id="temp" layoutX="93.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0"  textAlignment="CENTER" />
-         <Text fx:id="feels" layoutX="93.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0"  textAlignment="CENTER" />
-         <Text fx:id="tempMax" layoutX="93.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0"  textAlignment="CENTER" />
-         <Text fx:id="tempMin" layoutX="93.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0"  textAlignment="CENTER" />
-         <Text fx:id="Pressure" layoutX="93.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0"  textAlignment="CENTER" />
+         <Text fx:id="temp" layoutX="84.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0"  textAlignment="CENTER" />
+         <Text fx:id="feels" layoutX="84.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0"  textAlignment="CENTER" />
+         <Text fx:id="tempMax" layoutX="84.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0"  textAlignment="CENTER" />
+         <Text fx:id="tempMin" layoutX="84.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0"  textAlignment="CENTER" />
+         <Text fx:id="Pressure" layoutX="70.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0"  textAlignment="CENTER" />
 
 
    </children>
