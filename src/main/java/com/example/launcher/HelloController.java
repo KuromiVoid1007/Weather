@@ -8,10 +8,16 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import org.json.JSONObject;
+import javafx.application.Platform;
+
 
 public class HelloController {
+
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     private ResourceBundle resources;
@@ -27,6 +33,7 @@ public class HelloController {
 
     @FXML
     private Button serch;
+
 
     @FXML
     private TextField serchCity;
@@ -57,17 +64,40 @@ public class HelloController {
 
     @FXML
     void initialize() {
+
+
         serch.setOnAction(event ->{
             String getUsersCity = serchCity.getText().trim();
-            String output = getUrlContent("https://api.openweathermap.org/data/2.5/weather?q=" + getUsersCity + "&appid={8ec86d7e271d3ada451c71a1ff3f869a}");
-            System.out.println(output);
+            String output = getUrlContent("https://api.openweathermap.org/data/2.5/weather?q=" + getUsersCity + "&appid=d200ca4300e0429570a918f9dc0283b7");
 
-            /*if (!output.isEmpty()){
+            if (!output.isEmpty()) {
                 JSONObject obj = new JSONObject(output);
-                temp.setText(obj.getJSONObject("main").getDouble("temp"));
-            }*/
+                temp.setText("" + obj.getJSONObject("main").getDouble("temp"));
+                feels.setText("" + obj.getJSONObject("main").getDouble("feels_like"));
+                tempMax.setText("" + obj.getJSONObject("main").getDouble("temp_max"));
+                tempMin.setText("" + obj.getJSONObject("main").getDouble("temp_min"));
+                Pressure.setText("" + obj.getJSONObject("main").getDouble("pressure"));
+
+                centerText(temp);
+                centerText(feels);
+                centerText(tempMax);
+                centerText(tempMin);
+                centerText(Pressure);
+            }
         });
     }
+
+    private void centerText(Text text) {
+        // Привязываем `layoutX` элемента к ширине родителя
+        if (text.layoutXProperty().isBound()) {
+            text.layoutXProperty().unbind();
+        }
+
+        text.layoutXProperty().bind(
+                rootPane.widthProperty().subtract(text.boundsInLocalProperty().get().getWidth()).divide(2)
+        );
+    }
+
 
     private static String getUrlContent(String urlAdress){
         StringBuffer content = new StringBuffer();

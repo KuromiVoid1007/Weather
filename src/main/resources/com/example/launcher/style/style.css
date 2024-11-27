@@ -1,16 +1,23 @@
-.root {
-    -fx-background-color: #f0f0f0;
-}
-
-.my-button {
-    -fx-background-color: linear-gradient(to bottom, #4CAF50, #2E7D32);
+.button {
+    -fx-background-color: #323232;
     -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
     -fx-padding: 10 20;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-opacity: 40%;
 }
 
-.my-button:hover {
-    -fx-background-color: linear-gradient(to bottom, #66BB6A, #388E3C);
+.text-field {
+    -fx-background-color: #ffffff; /* Белый фон для поля */
+    -fx-text-fill: #000000;       /* Цвет текста */
+    -fx-background-radius: 5;   /* Закруглённые углы */
+    -fx-border-radius: 10;       /* Закруглённые углы для рамки */
+    -fx-border-color: transparent; /* Убираем рамку (если она есть) */
+    -fx-padding: 5 10;           /* Внутренние отступы */
+    -fx-font-size: 12px;         /* Размер шрифта */
 }
+
+.info-text {
+    -fx-text-alignment: center;
+}
+
